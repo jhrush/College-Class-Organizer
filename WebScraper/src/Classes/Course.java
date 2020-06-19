@@ -5,11 +5,24 @@ public class Course {
 	public String College;
 	public int Number;
 	public Course[] Prereq;
+	public boolean Required;
 	
-	public Course(String name, int number, Course[] prereq) {
+	public Course(String name, int number, Course[] prereq, boolean required) {
 		College = name;
 		Number = number;
 		Prereq = prereq;
+		Required = required;
+	}
+	
+	public void addPreReq(Course req)
+	{
+		Course[] copy = Prereq.clone();
+		Prereq = new Course[Prereq.length + 1];
+		
+		for (int i = 0; i < copy.length; i++)
+		{
+			Prereq[i] = copy[i];
+		}
 	}
 	
 	public String toString(boolean Outside)
@@ -19,11 +32,12 @@ public class Course {
 		
 		if(Outside)
 		{
-			output = String.format("%s %d \n", College, Number);
+			output = String.format("%s %d,", College, Number);
 			for(Course course: Prereq)
 			{
 				output += String.format("%s,", course.toString(false));
 			}
+			output += "\n";
 		}
 		else
 		{
