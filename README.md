@@ -13,5 +13,5 @@ Additionally, the information will be exported as a csv file where "or" and "OR"
 For example:
 </p>
 <pre>
-
+CSCI 4900, CSCI 1620, *, CSCI 2850, *, CSCI 3830, CSCI 4830
 </pre>
