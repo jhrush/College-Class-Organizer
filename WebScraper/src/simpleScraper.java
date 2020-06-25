@@ -1,4 +1,6 @@
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -44,6 +46,28 @@ public class simpleScraper {
 			 System.out.print(item.toString(true));
 		 }
 		 
+		 printToCSV(classes, "csvFile.txt");
+		 		 
+	}
+	public static void printToCSV(ArrayList<Course> classes, String fileName)
+	{
+		try 
+		{
+			FileWriter fileWriter = new FileWriter(fileName);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			for(Course item: classes)
+			{
+				printWriter.print(item.toString(true));
+			}
+			
+			printWriter.close();
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
 	}
 	
 	public static ArrayList<Course> scrape(String url)
@@ -108,7 +132,7 @@ public class simpleScraper {
 		        }
 		 }
 	}
-	
+		
 	public static Course preReqFinder(Course preReq)
 	{
 		
@@ -175,6 +199,7 @@ public class simpleScraper {
 										
 
 									}
+									//preReq.addPreReq(new Course("*", 6969, null, true));
 									
 									preReq.addPreReq(new Course(name, number, null, required));
 									
