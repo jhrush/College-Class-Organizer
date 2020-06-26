@@ -3,11 +3,11 @@ package Classes;
 public class Course {
 	
 	public String College;
-	public int Number;
+	public String Number;
 	public Course[] Prereq;
 	public boolean Required;
 	
-	public Course(String name, int number, Course[] prereq, boolean required) {
+	public Course(String name, String number, Course[] prereq, boolean required) {
 		College = name;
 		Number = number;
 		Prereq = prereq;
@@ -27,12 +27,11 @@ public class Course {
 	
 	public String toString(boolean Outside)
 	{
-		
-		String output;
+		String output = "";
 		
 		if(Outside)
-		{
-			output = String.format("%s %d,", College, Number);
+		{	
+			output = String.format("%s %s,", College, Number);
 			for(Course course: Prereq)
 			{
 				output += String.format("%s,", course.toString(false));
@@ -41,7 +40,7 @@ public class Course {
 		}
 		else
 		{
-			output = String.format("%s %d", College, Number);
+			output = String.format("%s %s", College, Number);
 		}
 		
 		return output;

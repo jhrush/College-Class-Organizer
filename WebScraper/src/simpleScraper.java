@@ -70,6 +70,12 @@ public class simpleScraper {
 		}
 	}
 	
+	/**
+	 * Note: not all prereqs are a tagged.
+	 * 
+	 * @param url The url of the page to scrape.
+	 * @return an array list of courses.
+	 */
 	public static ArrayList<Course> scrape(String url)
 	{
 		ArrayList<Course> courses = new ArrayList<Course>();
@@ -80,7 +86,6 @@ public class simpleScraper {
 		        	final HtmlPage page = webClient.getPage(url);
 		        	
 		            final Iterator<Object> nodesIterator = page.getByXPath("//div[@class='courseblock']").iterator();
-		            
 		            
 		            while(nodesIterator.hasNext()) {
 		            	DomElement curClass = (DomElement) nodesIterator.next();
@@ -106,18 +111,27 @@ public class simpleScraper {
 		            			
 		            			Iterator<HtmlElement> aTags = curElement.getElementsByTagName("a").iterator();
 		            			
+		            			//CurElement hold preq info at this point
+		            			String wholePreReq = curElement.asText();
+		            			//System.out.println(wholePreReq);
 		            			
 		            			while(aTags.hasNext())
 		            			{
 		            				String[] req = aTags.next().asText().split("\\h+");
-		            				prereqs.add(new Course(req[0], Integer.valueOf(req[1]).intValue(), null, true));
+		            				
+		            				if (wholePreReq.contains( "or " + req[0] + " " + Integer.valueOf(req[1]).intValue() ))
+		            				{
+		            					prereqs.add(new Course("*", "", null, true));
+		            				}
+		            				
+		            				prereqs.add(new Course(req[0], /**Integer.valueOf(req[1]).intValue()**/ req[1], null, true));
 		            			}
 		            		}
 		            		
 
 		            	}
 		            	
-		            	courses.add(new Course(title[0], Integer.valueOf(title[1]).intValue(), prereqs.toArray(new Course[prereqs.size()]), true));
+		            	courses.add(new Course(title[0], /**Integer.valueOf(title[1]).intValue()**/ title[1], prereqs.toArray(new Course[prereqs.size()]), true));
 
 		            }
 		            
@@ -148,7 +162,7 @@ public class simpleScraper {
 				subject.setSelectedAttribute(subject.getOptionByValue(preReq.College), true);
 				
 				HtmlSelect catalogNbr = form.getSelectByName("catalog_nbr");
-				catalogNbr.setSelectedAttribute(subject.getOptionByValue(Integer.toString(preReq.Number)), true);
+				catalogNbr.setSelectedAttribute(subject.getOptionByValue(/**Integer.toString**/(preReq.Number)), true);
 				
 				HtmlInput submit = form.getInputByValue("Submit");
 				final HtmlPage PreReqPage = (HtmlPage) submit.setChecked(true);
@@ -174,7 +188,7 @@ public class simpleScraper {
 								for(int i = 0; i < wordList.length; i++)
 								{
 									String name = "";
-									int number = 0;
+									String number = "";
 									boolean required = true;
 									
 									if(wordList[i].equals(wordList[i].toUpperCase()) && stringContainsNumber(wordList[i + 1]))
@@ -189,17 +203,16 @@ public class simpleScraper {
 										
 										if(wordList[i + 1].charAt(wordList[i + 1].length()) == ',')
 										{
-											number = Integer.parseInt(wordList[i + 1].substring(0, wordList[i + 1].length() - 1));
+											number = wordList[i + 1].substring(0, wordList[i + 1].length() - 1); //Integer.parseInt(wordList[i + 1].substring(0, wordList[i + 1].length() - 1));
 											nextRequired = true;
 										}
 										else
 										{
-											number = Integer.parseInt(wordList[i + 1]);
+											number = wordList[i + 1]; //Integer.parseInt(wordList[i + 1]);
 										}
 										
 
 									}
-									//preReq.addPreReq(new Course("*", 6969, null, true));
 									
 									preReq.addPreReq(new Course(name, number, null, required));
 									
@@ -209,9 +222,6 @@ public class simpleScraper {
 						}
 					}
 				}
-				
-				
-				
 				
 				
 				return preReq;
