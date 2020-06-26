@@ -43,5 +43,5 @@ For example:
 <pre>
 CSCI 4900, CSCI 1620,* , CSCI 2850,* , CSCI 3830, CSCI 4830
 </pre>
-<>
+
 
