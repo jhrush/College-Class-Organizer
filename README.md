@@ -26,6 +26,12 @@ One challenge is determining how we will scrape web pages. Web pages concerning 
 Code Milestone #1 Release Notes
 </h2>
 <p>
+Note: Before running the webscraper make sure to add htmlunit to the build path!
+</p>
+<p>
+Additionally, if you are on a unix system you can execute the build.sh and exec.sh to build and run the scraper.
+</p>
+<p>
 We implemented a basic web scraping java program via gargoyle software's HtmlUnit.
 </p>
 <p>
@@ -35,5 +41,7 @@ Additionally, the information will be exported as a csv file where "or" and "OR"
 For example:
 </p>
 <pre>
-CSCI 4900, CSCI 1620, *, CSCI 2850, *, CSCI 3830, CSCI 4830
+CSCI 4900, CSCI 1620,* , CSCI 2850,* , CSCI 3830, CSCI 4830
 </pre>
+<>
+
