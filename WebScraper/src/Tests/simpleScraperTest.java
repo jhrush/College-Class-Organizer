@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class WebscraperTests {
+public class simpleScraperTest {
 
 	@Test
 	public void test() {
-		
+
 	}
 
 }

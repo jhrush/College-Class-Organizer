@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="WebScraper/src"/>
 	<classpathentry kind="lib" path="WebScraper/lib/htmlunit-2.41.0-OSGi.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebScraper/bin"/>
 </classpath>
