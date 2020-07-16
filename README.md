@@ -70,6 +70,6 @@ We began development of the blazor app frontend which within a version controlle
 It is being hosted via AWS Elastic Beanstalk. The url to view the frontend is <a href="http://coursedisplay-dev.us-west-2.elasticbeanstalk.com/">here at this link.</a>
 </p>
 <p>
-Development for our database has begun and it is being hosted via AWS. We need to work on web integration.
+Development for our database has begun and it is being hosted via AWS. Although, we need to work on its web integration.
 </p>
 
