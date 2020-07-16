@@ -61,7 +61,10 @@ CSCI 4560,MATH 2230,*,MATH 2030,*,CSCI 2030,
 Code Milestone #2 Release Notes
 </h2>
 <p>
-Refactored and added junit testing for the simpleScraper and the Course classes. Changed the output within the CSV file and began extending functionality of the scraper itself.  
+Refactored and added junit testing for the simpleScraper and the Course classes. Changed the output within the CSV file and began extending functionality of the scraper itself.
+</p>
+<p>
+The tests themselves are quite simple. They simply verify that that functions work as previously specified. The test for the simpleScraper is simply a system test of sorts that makes sure that the CSV file matches what has perviously been expected.
 </p>
 <p>
 We began development of the blazor app frontend which within a version controlled repository <a href="https://github.com/TravisWisecup/Course_Display">on github here.</a>
