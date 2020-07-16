@@ -49,6 +49,15 @@ public class simpleScraper {
 		 printToCSV(classes, "csvFile.txt");
 		 		 
 	}
+	
+	/**
+	 * Prints to csv file with each class structured as 
+	 * "CSCI 4560,MATH 2230,* ,MATH 2030,* ,CSCI 2030," 
+	 * where "* " dictates or
+	 * 
+	 * @param classes - the list of classes.
+	 * @param fileName - the filename the classes are going to outputed to.
+	 */
 	public static void printToCSV(ArrayList<Course> classes, String fileName)
 	{
 		try 
@@ -71,7 +80,9 @@ public class simpleScraper {
 	}
 	
 	/**
-	 * Note: not all prereqs are a tagged.
+	 * Scrapes a specified url for a tagged classes and their subsequent prereqs.
+	 * 
+	 * Note: not all prereqs are "a" tagged.
 	 * 
 	 * @param url The url of the page to scrape.
 	 * @return an array list of courses.

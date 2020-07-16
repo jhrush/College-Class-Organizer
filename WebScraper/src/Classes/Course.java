@@ -1,7 +1,6 @@
 package Classes;
 
 public class Course {
-	
 	public String College;
 	public String Number;
 	public Course[] Prereq;
@@ -14,6 +13,11 @@ public class Course {
 		Required = required;
 	}
 	
+	/**
+	 * Add a prerequisite to a course.
+	 * 
+	 * @param req - the prerequisite to add to the course array.
+	 */
 	public void addPreReq(Course req)
 	{
 		Course[] copy = Prereq.clone();
@@ -25,13 +29,27 @@ public class Course {
 		}
 	}
 	
+	/**
+	 * Prints out a class along with its prerequisites.
+	 * 
+	 * @param Outside dictates whether or not a course is outside.
+	 * @return 
+	 */
 	public String toString(boolean Outside)
 	{
 		String output = "";
 		
 		if(Outside)
 		{	
-			output = String.format("%s %s,", College, Number);
+			if (College.equals("*"))
+			{
+				output = College + ",";
+			}
+			else
+			{
+				output = String.format("%s %s,", College, Number);
+			}
+			
 			for(Course course: Prereq)
 			{
 				output += String.format("%s,", course.toString(false));
@@ -40,7 +58,14 @@ public class Course {
 		}
 		else
 		{
-			output = String.format("%s %s", College, Number);
+			if (College.equals("*"))
+			{
+				output = College;
+			}
+			else
+			{
+				output = String.format("%s %s", College, Number);
+			}
 		}
 		
 		return output;
