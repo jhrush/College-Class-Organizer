@@ -64,6 +64,9 @@ Code Milestone #2 Release Notes
 Refactored and added junit testing for the simpleScraper and the Course classes. Changed the output within the CSV file and began extending functionality of the scraper itself.  
 </p>
 <p>
-Began development of the frontend which is located <a href="https://github.com/TravisWisecup/Course_Display"> on github here.</a>
+Began development of the blazor app frontend which within a version controlled repository <a href="https://github.com/TravisWisecup/Course_Display"> on github here.</a>
+</p>
+<p>
+It is being hosted via elastic beanstalk and the url is <a href="http://coursedisplay-dev.us-west-2.elasticbeanstalk.com/"> here at this link.</a>
 </p>
 
