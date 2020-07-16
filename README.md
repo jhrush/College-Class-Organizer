@@ -57,3 +57,13 @@ CSCI 4560,MATH 2230,*,MATH 2030,*,CSCI 2030,
 </pre>
 
 
+<h2>
+Code Milestone #2 Release Notes
+</h2>
+<p>
+Refactored and added junit testing for the simpleScraper and the Course classes. Changed the output within the CSV file and began extending functionality of the scraper itself.  
+</p>
+<p>
+Began development of the frontend which is located <a href="https://github.com/TravisWisecup/Course_Display"> on github here.</a>
+</p>
+
