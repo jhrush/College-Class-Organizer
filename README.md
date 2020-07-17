@@ -57,3 +57,22 @@ CSCI 4560,MATH 2230,*,MATH 2030,*,CSCI 2030,
 </pre>
 
 
+<h2>
+Code Milestone #2 Release Notes
+</h2>
+<p>
+Refactored and added junit testing for the simpleScraper and the Course classes. Changed the output within the CSV file and began extending functionality of the scraper itself.
+</p>
+<p>
+The tests themselves are quite simple. They simply verify that that functions work as previously specified. The test for the simpleScraper is simply a system test of sorts that makes sure that the CSV file matches what has perviously been expected.
+</p>
+<p>
+We began development of the blazor app frontend which within a version controlled repository <a href="https://github.com/TravisWisecup/Course_Display">on github here.</a>
+</p>
+<p>
+It is being hosted via AWS Elastic Beanstalk. The url to view the frontend is <a href="http://coursedisplay-dev.us-west-2.elasticbeanstalk.com/">here at this link.</a>
+</p>
+<p>
+Development for our database has begun and it is being hosted via AWS. Although, we need to work on its web integration.
+</p>
+
