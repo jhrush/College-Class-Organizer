@@ -2,12 +2,20 @@ package Tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import Classes.Course;
+import Classes.simpleScraper;
 
 public class CourseTest {
-
+	
+	/**
+	 * Test for the course class object functions.
+	 */
 	@Test
 	public void addPreReqTest() {
 		Course[] tmp = new Course[0];
@@ -45,8 +53,5 @@ public class CourseTest {
 		
 		newCrs = new Course("*", "101", tmp, true);
 		assertEquals(newCrs.toString(true), "*,\n");
-		
-		
 	}
-
 }

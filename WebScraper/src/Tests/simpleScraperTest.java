@@ -14,6 +14,9 @@ import Classes.simpleScraper;
 
 public class simpleScraperTest {
 
+	/**
+	 * Test for the simpleScraper class object to make sure its generated the expected csv file.
+	 */
 	@Test
 	public void csvChecktest() {
 		simpleScraper scrape = new simpleScraper();
