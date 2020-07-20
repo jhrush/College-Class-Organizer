@@ -49,9 +49,9 @@ public class CourseTest {
 		assertEquals(newCrs.toString(false), "*");
 		
 		newCrs = new Course("fun", "101", arr, true);
-		assertEquals(newCrs.toString(true), "fun 101,hey 1699,hey 1699,hello 1000,hi 69,\n");
+		assertEquals(newCrs.toString(true), "fun 101,3,\"hey 1699,hey 1699,hello 1000,hi 69,\"\n");
 		
 		newCrs = new Course("*", "101", tmp, true);
-		assertEquals(newCrs.toString(true), "*,\n");
+		assertEquals(newCrs.toString(true), "*,\"\"\n");
 	}
 }

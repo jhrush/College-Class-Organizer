@@ -42,6 +42,7 @@ public class simpleScraper {
 		 
 		 System.out.println("Done!!");
 		 
+		 int initialClass = 0;
 		 for(Course item: classes)
 		 {
 			 System.out.print(item.toString(true));
