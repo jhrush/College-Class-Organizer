@@ -76,3 +76,21 @@ It is being hosted via AWS Elastic Beanstalk. The URL to view the frontend is <a
 Development for our database has begun and it is being hosted via AWS. Although, we need to work on its web integration with our Java webscraper.
 </p>
 
+<p>
+Course conversion into a CSV line now appears as such:
+</p>
+<p>
+CSCI 4560  NUMBER THEORY & CRYPTOGRAPHY (3 credits)
+
+An overview of one of the many beautiful areas of mathematics and its modern application to secure communication. The course is ideal for any student who wants a taste of mathematics outside of, or in addition to, the calculus sequence. Topics to be covered include: prime numbers, congruences, perfect numbers, primitive roots, quadratic reciprocity, sums of squares, and Diophantine equations. Applications include error-correcting codes, symmetric and public key cryptography, secret sharing, and zero knowledge proofs. (Cross-listed with CSCI 8566, MATH 4560, MATH 8566).
+
+Prerequisite(s)/Corequisite(s): MATH 2230 with a C- or better or MATH 2030 with a C- or better or CSCI 2030 with a C- or better or permission of instructor
+</p>
+
+<p>
+Desired output for CVS line:
+</p>
+
+<pre>
+CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
+</pre>
