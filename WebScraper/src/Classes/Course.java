@@ -5,7 +5,7 @@ public class Course {
 	public String Number;
 	public Course[] Prereq;
 	public boolean Required;
-	public int Credits;
+	public String Credits;
 	
 	/**
 	 * Default constructor that assigns 3 credit hours to a course.
@@ -20,7 +20,7 @@ public class Course {
 		Number = number;
 		Prereq = prereq;
 		Required = required;
-		Credits = 3;
+		Credits = "3";
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class Course {
 	 * @param required - whether the course is required of not.
 	 * @param creds - how many credit hours does a course require.
 	 */
-	public Course(String name, String number, Course[] prereq, boolean required, int creds) 
+	public Course(String name, String number, Course[] prereq, boolean required, String creds) 
 	{
 		College = name;
 		Number = number;
@@ -74,7 +74,7 @@ public class Course {
 			}
 			else
 			{
-				output = String.format("%s %s,%d,", College, Number, Credits);
+				output = String.format("%s %s,%s,", College, Number, Credits);
 			}
 			
 			output += "\"";

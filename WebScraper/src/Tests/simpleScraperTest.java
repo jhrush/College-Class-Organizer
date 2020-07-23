@@ -20,6 +20,11 @@ public class simpleScraperTest {
 	@Test
 	public void csvChecktest() {
 		simpleScraper scrape = new simpleScraper();
+		
+		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer");
+		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/math/");
+		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/");
+		
 		File fileExpected = new File("csvFileExpected.txt");		
 		File fileActual = new File("csvFile.txt");
 		

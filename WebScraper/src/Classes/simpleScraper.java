@@ -17,14 +17,24 @@ import java.util.regex.Pattern;
 
 public class simpleScraper {
 	
+	private static ArrayList<Course> classes = new ArrayList<Course>();
+	
 	public simpleScraper() //static void main(String args[])
 	{
-		 ArrayList<Course> classes;
 		
+	}
+	
+	/**
+	 * The first
+	 * @param urlToScrape
+	 */
+	public static void begin(String urlToScrape)
+	{
 		 System.out.println("Scraping classes....");
 		 
-		 classes = scrape("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer");
+		 classes.addAll(scrape(urlToScrape));
 		 
+		 /**
 		 String College = classes.get(0).College;
 		 
 		 System.out.println("Determining prereqs....");
@@ -39,6 +49,7 @@ public class simpleScraper {
 				 }
 			 }
 		 }
+		 **/
 		 
 		 System.out.println("Done!!");
 		 
@@ -49,18 +60,17 @@ public class simpleScraper {
 		 }
 		 
 		 printToCSV(classes, "csvFile.txt");
-		 		 
 	}
 	
 	/**
-	 * Prints to csv file with each class structured as 
+	 * Prints to CSV file with each class structured as 
 	 * "CSCI 4560,MATH 2230,* ,MATH 2030,* ,CSCI 2030," 
 	 * where "* " dictates or
 	 * 
 	 * @param classes - the list of classes.
 	 * @param fileName - the filename the classes are going to outputed to.
 	 */
-	public static void printToCSV(ArrayList<Course> classes, String fileName)
+	private static void printToCSV(ArrayList<Course> classes, String fileName)
 	{
 		try 
 		{
@@ -89,7 +99,7 @@ public class simpleScraper {
 	 * @param url The url of the page to scrape.
 	 * @return an array list of courses.
 	 */
-	public static ArrayList<Course> scrape(String url)
+	private static ArrayList<Course> scrape(String url)
 	{
 		ArrayList<Course> courses = new ArrayList<Course>();
 		
@@ -109,42 +119,54 @@ public class simpleScraper {
 		            	
 		            	ArrayList<Course> prereqs = new ArrayList<Course>();
 		            	
+		            	String discipline = "";
+		            	String courseNum = "";
+		            	String creditNum = "";
+		            	
 		            	for(int i = 0; i < 2; i++)
 		            	{
-		            		
+		            		//Gets main course name.
 		            		if(i == 0)
 		            		{
 		            			HtmlElement curElement = (HtmlElement) Elements.next();
 		            			title = curElement.getFirstElementChild().asText().split("\\h+");
+		            			discipline = title[0];
+		            			courseNum = title[1];
+		            			creditNum = title[title.length - 2].replaceAll("[()]", "");
+		            			//System.out.printf("Title: %s\n", creditNum);
 		            		}
-		            		else if(i == 1)
+		            		else if(i == 1 && Elements.hasNext())
 		            		{
 		            			Elements.next();
-		            			HtmlElement curElement = (HtmlElement) Elements.next();
 		            			
-		            			Iterator<HtmlElement> aTags = curElement.getElementsByTagName("a").iterator();
-		            			
-		            			//CurElement hold preq info at this point
-		            			String wholePreReq = curElement.asText();
-		            			//System.out.println(wholePreReq);
-		            			
-		            			while(aTags.hasNext())
+		            			if (Elements.hasNext())
 		            			{
-		            				String[] req = aTags.next().asText().split("\\h+");
-		            				
-		            				if (wholePreReq.contains( "or " + req[0] + " " + Integer.valueOf(req[1]).intValue() ))
-		            				{
-		            					prereqs.add(new Course("*", "", null, true));
-		            				}
-		            				
-		            				prereqs.add(new Course(req[0], /**Integer.valueOf(req[1]).intValue()**/ req[1], null, true));
+			            			HtmlElement curElement = (HtmlElement) Elements.next();
+			            			
+			            			Iterator<HtmlElement> aTags = curElement.getElementsByTagName("a").iterator();
+			            			
+			            			//CurElement hold preq info at this point
+			            			String wholePreReq = curElement.asText();
+			            			//System.out.println(wholePreReq);
+			            			
+			            			while(aTags.hasNext())
+			            			{
+			            				String[] req = aTags.next().asText().split("\\h+");
+			            				
+			            				if (wholePreReq.contains( "or " + req[0] + " " + Integer.valueOf(req[1]).intValue() ))
+			            				{
+			            					prereqs.add(new Course("*", "", null, true));
+			            				}
+			            				
+			            				prereqs.add(new Course(req[0], /**Integer.valueOf(req[1]).intValue()**/ req[1], null, true, creditNum));
+			            			}
 		            			}
 		            		}
 		            		
 
 		            	}
 		            	
-		            	courses.add(new Course(title[0], /**Integer.valueOf(title[1]).intValue()**/ title[1], prereqs.toArray(new Course[prereqs.size()]), true));
+		            	courses.add(new Course(discipline, /**Integer.valueOf(title[1]).intValue()**/ courseNum, prereqs.toArray(new Course[prereqs.size()]), true, creditNum));
 
 		            }
 		            
@@ -160,7 +182,7 @@ public class simpleScraper {
 		 }
 	}
 		
-	public static Course preReqFinder(Course preReq)
+	private static Course preReqFinder(Course preReq)
 	{
 		
 		try (final WebClient webClient = new WebClient()) {
@@ -260,7 +282,7 @@ public class simpleScraper {
 	 * @param s - the string to check
 	 * @return - true or false
 	 */
-	public static boolean stringContainsNumber( String s )
+	private static boolean stringContainsNumber( String s )
 	{
 	    return Pattern.compile( "[0-9]" ).matcher( s ).find();
 	}
