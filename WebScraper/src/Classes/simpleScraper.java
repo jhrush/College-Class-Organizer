@@ -15,6 +15,11 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author jake
+ *
+ */
 public class simpleScraper {
 	
 	private static ArrayList<Course> classes = new ArrayList<Course>();
@@ -25,14 +30,21 @@ public class simpleScraper {
 	}
 	
 	/**
-	 * The first
-	 * @param urlToScrape
+	 * Scrapes course pages for classes and their prerequistes.
+	 * 
+	 * Example of courses webpage:
+	 * https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer
+	 * 
+	 * The information gathered will then be exported as a CSV file.
+	 * 
+	 * @param urlToScrape - the URL that will be scraped.
+	 * @param fileName - The name of the file the info that is scraped will be exported to.
 	 */
-	public static void begin(String urlToScrape)
+	public static void courseScrape(String urlToScrape, String fileName)
 	{
 		 System.out.println("Scraping classes....");
 		 
-		 classes.addAll(scrape(urlToScrape));
+		 classes = (scrape(urlToScrape));
 		 
 		 /**
 		 String College = classes.get(0).College;
@@ -53,13 +65,12 @@ public class simpleScraper {
 		 
 		 System.out.println("Done!!");
 		 
-		 int initialClass = 0;
 		 for(Course item: classes)
 		 {
 			 System.out.print(item.toString(true));
 		 }
 		 
-		 printToCSV(classes, "csvFile.txt");
+		 printToCSV(classes, fileName);
 	}
 	
 	/**
@@ -182,6 +193,18 @@ public class simpleScraper {
 		 }
 	}
 		
+	/**
+	 * Returns true if the string contains a number.
+	 * Referenced from here https://www.moreofless.co.uk/check-string-contains-number-using-java/
+	 * @param s - the string to check
+	 * @return - true or false
+	 */
+	private static boolean stringContainsNumber( String s )
+	{
+	    return Pattern.compile( "[0-9]" ).matcher( s ).find();
+	}
+	
+	/**
 	private static Course preReqFinder(Course preReq)
 	{
 		
@@ -195,10 +218,12 @@ public class simpleScraper {
 				
 				HtmlSelect subject = form.getSelectByName("subject");
 				subject.setSelectedAttribute(subject.getOptionByValue(preReq.College), true);
-				
+			
 				HtmlSelect catalogNbr = form.getSelectByName("catalog_nbr");
-				catalogNbr.setSelectedAttribute(subject.getOptionByValue(/**Integer.toString**/(preReq.Number)), true);
-				
+				**/
+	
+				//catalogNbr.setSelectedAttribute(subject.getOptionByValue(/**Integer.toString**/(preReq.Number)), true);
+				/**
 				HtmlInput submit = form.getInputByValue("Submit");
 				final HtmlPage PreReqPage = (HtmlPage) submit.setChecked(true);
 				
@@ -275,16 +300,6 @@ public class simpleScraper {
 		
 		
 	}
-	
-	/**
-	 * Returns true if the string contains a number.
-	 * Referenced from here https://www.moreofless.co.uk/check-string-contains-number-using-java/
-	 * @param s - the string to check
-	 * @return - true or false
-	 */
-	private static boolean stringContainsNumber( String s )
-	{
-	    return Pattern.compile( "[0-9]" ).matcher( s ).find();
-	}
+	**/
 
 }

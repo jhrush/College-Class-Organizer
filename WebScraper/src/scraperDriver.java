@@ -5,10 +5,10 @@ public class scraperDriver {
 	{
 		simpleScraper scrape = new simpleScraper();
 		//Computer science
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer", "CSCI.txt");
 		//Math
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/math/");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/coursesaz/math/", "MATH.txt");
 		//CIST
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/", "CIST.txt");
 	}
 }

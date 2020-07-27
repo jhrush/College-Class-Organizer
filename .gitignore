@@ -5,3 +5,8 @@ simpleScraper.class
 CourseTest.class
 simpleScraperTest.class
 scraperDriver.class
+CIST.txt
+CSCI.txt
+MATH.txt
+CISTExpected.txt
+coreReq.txt

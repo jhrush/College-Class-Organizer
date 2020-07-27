@@ -21,12 +21,12 @@ public class simpleScraperTest {
 	public void csvChecktest() {
 		simpleScraper scrape = new simpleScraper();
 		
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer");
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/math/");
-		simpleScraper.begin("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer", "CSCI.txt");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/coursesaz/math/", "MATH.txt");
+		simpleScraper.courseScrape("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/", "CIST.txt");
 		
-		File fileExpected = new File("csvFileExpected.txt");		
-		File fileActual = new File("csvFile.txt");
+		File fileExpected = new File("CIST.txt");		
+		File fileActual = new File("CISTExpected.txt");
 		
 		try 
 		{
