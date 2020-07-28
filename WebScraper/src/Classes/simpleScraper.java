@@ -23,10 +23,88 @@ import java.util.regex.Pattern;
 public class simpleScraper {
 	
 	private static ArrayList<Course> classes = new ArrayList<Course>();
+	private static ArrayList<String> coreReqs = new ArrayList<String>();
 	
 	public simpleScraper() //static void main(String args[])
 	{
 		
+	}
+	
+	public static void getCoreReqs(String urlToScrape, String fileName)
+	{
+		coreReqs = coreScrape(urlToScrape);
+		for (int i = 0; i < coreReqs.size(); i++)
+		{
+			System.out.println(coreReqs.get(i));
+		}
+		
+		try 
+		{
+			FileWriter fileWriter = new FileWriter(fileName);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			for (int i = 0; i < coreReqs.size(); i++)
+			{
+				printWriter.println(coreReqs.get(i));
+			}
+			
+			printWriter.close();
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
+	}
+	
+	private static ArrayList<String> coreScrape(String url)
+	{
+		ArrayList<String> courses = new ArrayList<String>();
+		
+		 try (final WebClient webClient = new WebClient()) {
+		        try{
+		        	
+		        	final HtmlPage page = webClient.getPage(url);
+		        	
+		        	//System.out.println(page.asXml());
+		        	
+		            final Iterator<Object> nodesIterator = page.getByXPath("//td[@class='codecol']").iterator();
+		            
+		            
+		            while(nodesIterator.hasNext()) {
+		            	DomElement curClass = (DomElement) nodesIterator.next();
+		            	
+		            	Iterator<HtmlElement> Elements = curClass.getElementsByTagName("a").iterator();
+		            	
+		            	String title = "";
+		            	
+		            	ArrayList<String> prereqs = new ArrayList<String>();
+		            	
+		            	for(int i = 0; i < 2; i++)
+		            	{
+		            		//Gets main course name.
+		            		if(i == 0)
+		            		{
+		            			HtmlElement curElement = Elements.next();
+		            			title = curElement.asText();
+		            			System.out.println(curElement.asText());
+		            		}		            		
+		            	}
+		            	
+		            	courses.add(title);
+
+		            }
+		            
+		            return courses;
+		            
+		        }
+		        
+		        catch(IOException e) 
+		        {
+		        	e.printStackTrace();
+		        	return null;
+		        }
+		 }
 	}
 	
 	/**
@@ -40,7 +118,7 @@ public class simpleScraper {
 	 * @param urlToScrape - the URL that will be scraped.
 	 * @param fileName - The name of the file the info that is scraped will be exported to.
 	 */
-	public static void courseScrape(String urlToScrape, String fileName)
+	public static void getCourseLists(String urlToScrape, String fileName)
 	{
 		 System.out.println("Scraping classes....");
 		 
@@ -192,6 +270,7 @@ public class simpleScraper {
 		        }
 		 }
 	}
+	
 		
 	/**
 	 * Returns true if the string contains a number.
