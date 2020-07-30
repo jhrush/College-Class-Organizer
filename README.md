@@ -99,5 +99,13 @@ CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
 <h2>
 Code Milestone #3 Release Notes
 </h2>
-
+<p>
+Generates separate files for course webpages separated by discipline. Got rid of hanging OR symbols at the end of prereq list. Additionally, got rid of bugs where class name potentially appears in the prereq list. Added real credit hour amounts to scrape and compatibility to scrape multiple pages course list. 
+</p>
+<p>
+Functionality for scraping core courses requirements has been added. It is placed in Core.txt. Additionally, added testing for core courses requirements list. Core course requirements files consist of only a courses name.
+</p>
+<p>
+Currently I'm working on separating core course requirements into their respective tables. i.e. College of IS&T Core Courses for Computer Science Majors, Computer Science Upper-Division Courses (12 hours), and Additional Computer Science Core Extension Courses (9 hours).
+</p>
 
