@@ -94,3 +94,10 @@ Desired output for CVS line:
 <pre>
 CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
 </pre>
+
+
+<h2>
+Code Milestone #3 Release Notes
+</h2>
+
+
