@@ -13,6 +13,7 @@ import Classes.Course;
 import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
@@ -239,15 +240,21 @@ public class simpleScraper {
 			            			//System.out.println(wholePreReq);
 			            			
 			            			while(aTags.hasNext())
-			            			{
+			            			{			            				
 			            				String[] req = aTags.next().asText().split("\\h+");
 			            				
-			            				if (wholePreReq.contains( "or " + req[0] + " " + Integer.valueOf(req[1]).intValue() ))
+			            				if (wholePreReq.contains( "or " + req[0] + " " + Integer.valueOf(req[1]).intValue()))
 			            				{
 			            					prereqs.add(new Course("*", "", null, true));
 			            				}
 			            				
-			            				prereqs.add(new Course(req[0], /**Integer.valueOf(req[1]).intValue()**/ req[1], null, true, creditNum));
+			            				Course prereq = new Course(req[0], req[1], null, true, creditNum);
+			            				
+			            				//Prereqs can't be equal to course it attached to.
+			            				if(!prereq.Number.equals(courseNum))
+			            				{
+			            					prereqs.add(prereq);
+			            				}
 			            			}
 		            			}
 		            		}
@@ -255,6 +262,7 @@ public class simpleScraper {
 
 		            	}
 		            	
+		            	removeOrAtEnd(prereqs);
 		            	courses.add(new Course(discipline, /**Integer.valueOf(title[1]).intValue()**/ courseNum, prereqs.toArray(new Course[prereqs.size()]), true, creditNum));
 
 		            }
@@ -269,6 +277,14 @@ public class simpleScraper {
 		        	return null;
 		        }
 		 }
+	}
+	
+	private static void removeOrAtEnd(ArrayList<Course> prereqs)
+	{
+		while(prereqs.size() != 0 && prereqs.get(prereqs.size() - 1).College.equals("*"))
+		{
+			prereqs.remove(prereqs.size() - 1);
+		}
 	}
 	
 		
