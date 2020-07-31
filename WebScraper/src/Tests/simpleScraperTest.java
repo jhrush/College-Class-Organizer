@@ -19,8 +19,6 @@ public class simpleScraperTest {
 	 */
 	@Test
 	public void csvChecktest() {
-		simpleScraper scrape = new simpleScraper();
-		
 		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer", "CSCI.txt");
 		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/coursesaz/math/", "MATH.txt");
 		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/", "CIST.txt");
@@ -33,7 +31,29 @@ public class simpleScraperTest {
 			assertTrue("Difference detected!", FileUtils.contentEquals(fileExpected, fileActual));
 		} catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Test for the simpleScraper class object to make sure its generated the expected csv file.
+	 */
+	@Test
+	public void coreTest() {
+		
+		//Core requirements
+		simpleScraper.getCoreReqs("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext", 
+				"Core.txt");
+		
+		File fileExpected = new File("Core.txt");		
+		File fileActual = new File("CoreExpected.txt");
+		
+		try 
+		{
+			assertTrue("Difference detected!", FileUtils.contentEquals(fileExpected, fileActual));
+		} catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 		

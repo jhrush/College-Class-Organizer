@@ -3,7 +3,6 @@ import Classes.simpleScraper;
 public class scraperDriver {
 	public static void main(String args[])
 	{
-		simpleScraper scrape = new simpleScraper();
 		//Computer science
 		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer", 
 				"CSCI.txt");
