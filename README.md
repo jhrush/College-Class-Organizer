@@ -100,13 +100,13 @@ CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
 Code Milestone #3 Release Notes
 </h2>
 <p>
-Generates separate files for course webpages separated by discipline. Got rid of hanging OR symbols at the end of prereq list. Additionally, got rid of bugs where class name potentially appears in the prereq list. Added real credit hour amounts to scrape and compatibility to scrape multiple pages course list. 
+Generates separate files for course webpages separated by discipline. Got rid of hanging OR symbols at the end of prereq list. Additionally, got rid of bugs where class names potentially appear in the prereq list. Added real credit hour amounts to scrape and compatibility to scrape multiple page’s course list.
 </p>
 <p>
-Functionality for scraping core courses requirements has been added. It is placed in Core.txt. Additionally, added testing for core courses requirements list. Core course requirements files consist of only a courses name.
+Functionality for scraping core courses requirements has been added. It is placed in Core.txt. Additionally, added testing for core courses requirements list. Core course requirements files consist of only a course name.
 </p>
 <p>
-Currently the webscraper scrapes these webpages (for computer science majors):
+Currently the web scraper scrapes these webpages (for computer science majors):
 </p>
 <p>
 Core course list for computer science: https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext
