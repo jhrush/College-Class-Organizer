@@ -112,7 +112,7 @@ Currently the webscraper scrapes these webpages (for computer science majors):
 Core course list for computer science: https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext
 </p>
 <p>
-Math: https://catalog.unomaha.edu/undergraduate/coursesaz/math/
+MATH: https://catalog.unomaha.edu/undergraduate/coursesaz/math/
 </p>
 <p>
 CIST: https://catalog.unomaha.edu/undergraduate/coursesaz/cist/
