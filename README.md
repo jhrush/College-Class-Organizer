@@ -106,6 +106,16 @@ Generates separate files for course webpages separated by discipline. Got rid of
 Functionality for scraping core courses requirements has been added. It is placed in Core.txt. Additionally, added testing for core courses requirements list. Core course requirements files consist of only a courses name.
 </p>
 <p>
+Currently the webscraper scrapes these webpages (for computer science majors):
+</p>
+<p>
+Core course list for computer science: https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext
+https://catalog.unomaha.edu/undergraduate/coursesaz/math/
+https://catalog.unomaha.edu/undergraduate/coursesaz/cist/
+https://catalog.unomaha.edu/undergraduate/coursesaz/cybr/
+</p>
+<p>
 Currently I'm working on separating core course requirements into their respective tables. i.e. College of IS&T Core Courses for Computer Science Majors, Computer Science Upper-Division Courses (12 hours), and Additional Computer Science Core Extension Courses (9 hours).
 </p>
+
 
