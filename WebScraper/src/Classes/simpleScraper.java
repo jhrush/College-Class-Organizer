@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.javascript.host.dom.NodeList;
 
 import Classes.Course;
@@ -24,16 +23,18 @@ import java.util.regex.Pattern;
 public class simpleScraper {
 	
 	private static ArrayList<Course> classes = new ArrayList<Course>();
-	private static ArrayList<String> coreReqs = new ArrayList<String>();
+	//private static ArrayList<String> coreReqs = new ArrayList<String>();
 	
 	public simpleScraper() //static void main(String args[])
 	{
 		
 	}
 	
+	/**
 	public static void getCoreReqs(String urlToScrape, String fileName)
 	{
-		coreReqs = coreScrape(urlToScrape);
+		//coreReqs = 
+		coreScrape(urlToScrape, fileName);
 		for (int i = 0; i < coreReqs.size(); i++)
 		{
 			System.out.println(coreReqs.get(i));
@@ -57,8 +58,14 @@ public class simpleScraper {
 			return;
 		}
 	}
+	**/
 	
-	private static ArrayList<String> coreScrape(String url)
+	/**
+	 * Scraping for core requirements.
+	 * @param url - the url that the core requirements are at.
+	 * @param fileName - the file name that the course list will be printed to.
+	 */
+	public static void getCoreReqs(String url)
 	{
 		ArrayList<String> courses = new ArrayList<String>();
 		
@@ -69,43 +76,81 @@ public class simpleScraper {
 		        	
 		        	//System.out.println(page.asXml());
 		        	
-		            final Iterator<Object> nodesIterator = page.getByXPath("//td[@class='codecol']").iterator();
-		            
-		            
-		            while(nodesIterator.hasNext()) {
-		            	DomElement curClass = (DomElement) nodesIterator.next();
-		            	
-		            	Iterator<HtmlElement> Elements = curClass.getElementsByTagName("a").iterator();
-		            	
-		            	String title = "";
-		            	
-		            	ArrayList<String> prereqs = new ArrayList<String>();
-		            	
-		            	for(int i = 0; i < 2; i++)
-		            	{
-		            		//Gets main course name.
-		            		if(i == 0)
-		            		{
-		            			HtmlElement curElement = Elements.next();
-		            			title = curElement.asText();
-		            			System.out.println(curElement.asText());
-		            		}		            		
-		            	}
-		            	
-		            	courses.add(title);
-
-		            }
-		            
-		            return courses;
-		            
+		            //final Iterator<Object> nodesIterator = page.getByXPath("//td[@class='codecol']").iterator();
+		        	
+		        	DomNodeList<DomElement> x = page.getElementsByTagName("table");
+		        	var nTables = x.getLength() - 1;
+		        	int tableNum = 1;
+		        	
+		        	for(int j = 0; j < nTables ; j++)
+		        	{
+			        	final HtmlTable table = (HtmlTable) page.getByXPath("//table[@class='sc_courselist']").get(j);
+			        	
+			        	for (final HtmlTableRow row : table.getRows()) {
+			        	    //System.out.println("Found row");
+			        		
+			        		
+			        	    int cellCount = 0;
+			        	    ArrayList<String> cells = new ArrayList<String>();
+			        	    
+			        	    for (final HtmlTableCell cell : row.getCells()) {
+			        	    	cellCount++;
+			        	        //System.out.println("   Found cell: " + cell.asText());
+			        	        cells.add(cell.asText());
+			        	        
+			        	        String cname = cells.get(0);
+			        	        
+			        	        //checks if there is 3 cells in a row and makes sure that the first row is equal to 2.
+			        	        if (cellCount == 3 && cname.split("\\s+").length == 2)
+			        	        {
+			        	        	courses.add(cname);
+			        	        	//System.out.println(cname);
+			        	        }
+			        	    }
+			        	}
+			        	if (!courses.isEmpty())
+			        	{
+			        		System.out.println("Table " + tableNum + " below!");
+			        		printReqToFile(courses, "REQS_" + tableNum + ".txt");
+			        	
+			        	
+				        	tableNum++;
+				        	courses.clear();
+			        	}
+		        	}
 		        }
 		        
 		        catch(IOException e) 
 		        {
 		        	e.printStackTrace();
-		        	return null;
 		        }
 		 }
+	}
+	
+	private static void printReqToFile(ArrayList<String> coreReqs, String fileName)
+	{
+		for (int i = 0; i < coreReqs.size(); i++)
+		{
+			System.out.println(coreReqs.get(i));
+		}
+		
+		try 
+		{
+			FileWriter fileWriter = new FileWriter(fileName);
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			for (int i = 0; i < coreReqs.size(); i++)
+			{
+				printWriter.println(coreReqs.get(i));
+			}
+			
+			printWriter.close();
+		}
+		catch(IOException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
 	}
 	
 	/**
@@ -263,7 +308,7 @@ public class simpleScraper {
 		            	}
 		            	
 		            	removeOrAtEnd(prereqs);
-		            	courses.add(new Course(discipline, /**Integer.valueOf(title[1]).intValue()**/ courseNum, prereqs.toArray(new Course[prereqs.size()]), true, creditNum));
+		            	courses.add(new Course(discipline, courseNum, prereqs.toArray(new Course[prereqs.size()]), true, creditNum));
 
 		            }
 		            
@@ -294,10 +339,12 @@ public class simpleScraper {
 	 * @param s - the string to check
 	 * @return - true or false
 	 */
+	/**
 	private static boolean stringContainsNumber( String s )
 	{
 	    return Pattern.compile( "[0-9]" ).matcher( s ).find();
 	}
+	**/
 	
 	/**
 	private static Course preReqFinder(Course preReq)

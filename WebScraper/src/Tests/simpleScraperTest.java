@@ -40,14 +40,13 @@ public class simpleScraperTest {
 	 * Test for the simpleScraper class object to make sure its generated the expected csv file.
 	 */
 	@Test
-	public void coreTest() {
+	public void coreReqsTest() {
 		
 		//Core requirements
-		simpleScraper.getCoreReqs("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext", 
-				"Core.txt");
+		simpleScraper.getCoreReqs("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext");
 		
-		File fileExpected = new File("Core.txt");		
-		File fileActual = new File("CoreExpected.txt");
+		File fileExpected = new File("REQS1Expected.txt");		
+		File fileActual = new File("REQS_1.txt");
 		
 		try 
 		{
