@@ -79,7 +79,7 @@ public class simpleScraper {
 		            //final Iterator<Object> nodesIterator = page.getByXPath("//td[@class='codecol']").iterator();
 		        	
 		        	DomNodeList<DomElement> x = page.getElementsByTagName("table");
-		        	var nTables = x.getLength() - 1;
+		        	int nTables = x.getLength() - 1;
 		        	int tableNum = 1;
 		        	
 		        	for(int j = 0; j < nTables ; j++)

@@ -45,7 +45,7 @@ public class simpleScraperTest {
 		//Core requirements
 		simpleScraper.getCoreReqs("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext");
 		
-		File fileExpected = new File("REQS1Expected.txt");		
+		File fileExpected = new File("REQS_1Expected.txt");		
 		File fileActual = new File("REQS_1.txt");
 		
 		try 
