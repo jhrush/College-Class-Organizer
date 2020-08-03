@@ -11,7 +11,7 @@ public class scraperDriver {
 		//CIST
 		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/coursesaz/cist/", "CIST.txt");
 		//CYBER
-		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/coursesaz/cybr/", "CYBER.txt");
+		simpleScraper.getCourseLists("https://catalog.unomaha.edu/undergraduate/coursesaz/cybr/", "CYBR.txt");
 		//Core requirements
 		simpleScraper.getCoreReqs("https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/computer-science-bs/#requirementstext");
 	}
