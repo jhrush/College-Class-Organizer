@@ -121,6 +121,9 @@ CIST: https://catalog.unomaha.edu/undergraduate/coursesaz/cist/
 CYBR: https://catalog.unomaha.edu/undergraduate/coursesaz/cybr/
 </p>
 <p>
+CSCI: https://catalog.unomaha.edu/undergraduate/college-information-science-technology/computer-science/#coursestextcontainer
+</p>
+<p>
 Currently I'm working on separating core course requirements into their respective tables. i.e. College of IS&T Core Courses for Computer Science Majors, Computer Science Upper-Division Courses (12 hours), and Additional Computer Science Core Extension Courses (9 hours).
 </p>
 
