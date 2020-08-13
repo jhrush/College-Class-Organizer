@@ -131,5 +131,5 @@ Currently I'm working on separating core course requirements into their respecti
 Code Milestone #4 Release Notes
 </h2>
 <p>
-Support for CYBR discipline course lists has been added. Documentation has been added in addition to improve the JUnit test cases for better coverage. Additionally, minor refactoring took place.
+Support for CYBR discipline course lists has been added. Documentation has been added in addition to improved the JUnit testing for better coverage. Additionally, minor refactoring took place.
 </p>
