@@ -5,7 +5,11 @@ simpleScraper.class
 CourseTest.class
 simpleScraperTest.class
 scraperDriver.class
-#CIST.txt
-#CSCI.txt
-#MATH.txt
-#Core.txt
+CIST.txt
+CSCI.txt
+MATH.txt
+Core.txt
+CSCI.txt
+REQS_1.txt
+REQS_2.txt
+REQS_3.txt
