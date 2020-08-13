@@ -53,5 +53,13 @@ public class CourseTest {
 		
 		newCrs = new Course("*", "101", tmp, true);
 		assertEquals(newCrs.toString(true), "*,\"\"\n");
+		
+		Course newCrsCred = new Course("*", "101", tmp, true, "3");
+		assertEquals(newCrs.toString(true), newCrsCred.toString(true));
+		
+		newCrs = new Course("hello", "101", tmp, true);
+		newCrsCred = new Course("hello", "101", tmp, true, "5");
+		assertNotEquals(newCrs.toString(true), newCrsCred.toString(true));
+		
 	}
 }

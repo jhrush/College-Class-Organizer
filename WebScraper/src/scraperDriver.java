@@ -1,5 +1,10 @@
 import Classes.simpleScraper;
 
+/**
+ * The driver application that's scrapes for course lists and requirements associated with computer science!
+ * @author jake
+ *
+ */
 public class scraperDriver {
 	public static void main(String args[])
 	{

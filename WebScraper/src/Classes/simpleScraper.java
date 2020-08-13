@@ -2,20 +2,16 @@ package Classes;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-import com.gargoylesoftware.htmlunit.javascript.host.dom.NodeList;
 
-import Classes.Course;
-import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Pattern;
 
 /**
+ * A simple scraper object that scrapes for both core requirements
+ * and course lists per discipline.
  * 
  * @author jake
  *
@@ -23,46 +19,16 @@ import java.util.regex.Pattern;
 public class simpleScraper {
 	
 	private static ArrayList<Course> classes = new ArrayList<Course>();
-	//private static ArrayList<String> coreReqs = new ArrayList<String>();
 	
-	public simpleScraper() //static void main(String args[])
+	public simpleScraper()
 	{
 		
 	}
 	
-	/**
-	public static void getCoreReqs(String urlToScrape, String fileName)
-	{
-		//coreReqs = 
-		coreScrape(urlToScrape, fileName);
-		for (int i = 0; i < coreReqs.size(); i++)
-		{
-			System.out.println(coreReqs.get(i));
-		}
-		
-		try 
-		{
-			FileWriter fileWriter = new FileWriter(fileName);
-			PrintWriter printWriter = new PrintWriter(fileWriter);
-			
-			for (int i = 0; i < coreReqs.size(); i++)
-			{
-				printWriter.println(coreReqs.get(i));
-			}
-			
-			printWriter.close();
-		}
-		catch(IOException e) 
-		{
-			e.printStackTrace();
-			return;
-		}
-	}
-	**/
-	
+
 	/**
 	 * Scraping for core requirements.
-	 * @param url - the url that the core requirements are at.
+	 * @param url - the URL that the core requirements are at.
 	 * @param fileName - the file name that the course list will be printed to.
 	 */
 	public static void getCoreReqs(String url)
@@ -127,6 +93,12 @@ public class simpleScraper {
 		 }
 	}
 	
+	/**
+	 * Prints core requisites to a file.
+	 * 
+	 * @param coreReqs - The list of core requirements.
+	 * @param fileName - The filename where the information will be stored.
+	 */
 	private static void printReqToFile(ArrayList<String> coreReqs, String fileName)
 	{
 		for (int i = 0; i < coreReqs.size(); i++)
@@ -170,23 +142,6 @@ public class simpleScraper {
 		 
 		 classes = (scrape(urlToScrape));
 		 
-		 /**
-		 String College = classes.get(0).College;
-		 
-		 System.out.println("Determining prereqs....");
-		 
-		 for(Course item: classes)
-		 {
-			 for(Course preReq: item.Prereq)
-			 {
-				 if(!preReq.College.equals(College) && classes.indexOf(preReq) != -1)
-				 {
-					 classes.add(preReqFinder(preReq));
-				 }
-			 }
-		 }
-		 **/
-		 
 		 System.out.println("Done!!");
 		 
 		 for(Course item: classes)
@@ -199,11 +154,11 @@ public class simpleScraper {
 	
 	/**
 	 * Prints to CSV file with each class structured as 
-	 * "CSCI 4560,MATH 2230,* ,MATH 2030,* ,CSCI 2030," 
+	 * CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
 	 * where "* " dictates or
 	 * 
 	 * @param classes - the list of classes.
-	 * @param fileName - the filename the classes are going to outputed to.
+	 * @param fileName - the filename the classes are going to placed.
 	 */
 	private static void printToCSV(ArrayList<Course> classes, String fileName)
 	{
@@ -227,11 +182,11 @@ public class simpleScraper {
 	}
 	
 	/**
-	 * Scrapes a specified url for a tagged classes and their subsequent prereqs.
+	 * Scrapes a specified URL for a tagged classes and their subsequent prerequisites.
 	 * 
-	 * Note: not all prereqs are "a" tagged.
+	 * Note: not all prerequisites are "a" tagged.
 	 * 
-	 * @param url The url of the page to scrape.
+	 * @param url - The URL of the page to scrape.
 	 * @return an array list of courses.
 	 */
 	private static ArrayList<Course> scrape(String url)
@@ -324,6 +279,11 @@ public class simpleScraper {
 		 }
 	}
 	
+	/**
+	 * Removes any hanging ORs (*) at the end of prerequisites list.
+	 * 
+	 * @param prereqs- A list of courses that act as prerequisites to another course.
+	 */
 	private static void removeOrAtEnd(ArrayList<Course> prereqs)
 	{
 		while(prereqs.size() != 0 && prereqs.get(prereqs.size() - 1).College.equals("*"))
@@ -331,117 +291,4 @@ public class simpleScraper {
 			prereqs.remove(prereqs.size() - 1);
 		}
 	}
-	
-		
-	/**
-	 * Returns true if the string contains a number.
-	 * Referenced from here https://www.moreofless.co.uk/check-string-contains-number-using-java/
-	 * @param s - the string to check
-	 * @return - true or false
-	 */
-	/**
-	private static boolean stringContainsNumber( String s )
-	{
-	    return Pattern.compile( "[0-9]" ).matcher( s ).find();
-	}
-	**/
-	
-	/**
-	private static Course preReqFinder(Course preReq)
-	{
-		
-		try (final WebClient webClient = new WebClient()) {
-			
-			try 
-			{
-				final HtmlPage page = webClient.getPage("https://www.unomaha.edu/registrar/students/before-you-enroll/class-search/index.php");
-				List<HtmlForm> forms = page.getForms();
-				HtmlForm form = forms.get(0);
-				
-				HtmlSelect subject = form.getSelectByName("subject");
-				subject.setSelectedAttribute(subject.getOptionByValue(preReq.College), true);
-			
-				HtmlSelect catalogNbr = form.getSelectByName("catalog_nbr");
-				**/
-	
-				//catalogNbr.setSelectedAttribute(subject.getOptionByValue(/**Integer.toString**/(preReq.Number)), true);
-				/**
-				HtmlInput submit = form.getInputByValue("Submit");
-				final HtmlPage PreReqPage = (HtmlPage) submit.setChecked(true);
-				
-				final Iterator<Object> nodesIterator = PreReqPage.getByXPath("//div[@class='dotted-bottom']").iterator();
-				while(nodesIterator.hasNext())
-				{
-					DomElement curDiv = (DomElement) nodesIterator.next();
-					
-					DomNodeList<HtmlElement> Elements = curDiv.getElementsByTagName("p");
-					
-					if (!Elements.isEmpty())
-					{
-
-						for(HtmlElement element: Elements)
-						{
-							if(element.asText().contains("Prereq:"))
-							{
-								String[] wordList = element.asText().split("\\s+");
-								
-								boolean nextRequired = false;
-								
-								for(int i = 0; i < wordList.length; i++)
-								{
-									String name = "";
-									String number = "";
-									boolean required = true;
-									
-									if(wordList[i].equals(wordList[i].toUpperCase()) && stringContainsNumber(wordList[i + 1]))
-									{
-										name = wordList[i];
-										
-										if(wordList[i - 1].equals("or") && !nextRequired)
-										{
-											required = false;
-										}
-										nextRequired = false;
-										
-										if(wordList[i + 1].charAt(wordList[i + 1].length()) == ',')
-										{
-											number = wordList[i + 1].substring(0, wordList[i + 1].length() - 1); //Integer.parseInt(wordList[i + 1].substring(0, wordList[i + 1].length() - 1));
-											nextRequired = true;
-										}
-										else
-										{
-											number = wordList[i + 1]; //Integer.parseInt(wordList[i + 1]);
-										}
-										
-
-									}
-									
-									preReq.addPreReq(new Course(name, number, null, required));
-									
-									
-								}
-							}
-						}
-					}
-				}
-				
-				
-				return preReq;
-			}
-			finally
-			{
-				
-			}
-			
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-			return null;
-		}
-		
-		
-	}
-	**/
-
 }
