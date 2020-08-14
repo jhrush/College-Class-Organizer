@@ -133,5 +133,5 @@ Code Milestone #4 Release Notes
 <p>
 Support for CYBR discipline course lists has been added. Documentation has been added in addition to improved the JUnit testing for better coverage. Additionally, minor refactoring took place. 
 
-Implemented javadoc docuementation.
+Implemented Javadoc documentation through eclipse.
 </p>
