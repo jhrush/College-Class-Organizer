@@ -1,5 +1,10 @@
 package Classes;
 
+/**
+ * A course is composed of a discipline, it's number, courses that act as prerequisites, and a boolean value of whether it's required or not.
+ * @author jacob
+ *
+ */
 public class Course {
 	public String College;
 	public String Number;
