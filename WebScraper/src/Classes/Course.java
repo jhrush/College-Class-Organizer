@@ -60,7 +60,7 @@ public class Course {
 	 * Prints out a class along with its prerequisites.
 	 * 
 	 * @param Outside dictates whether or not a course is outside.
-	 * @return 
+	 * @return String value that represents a course.
 	 */
 	public String toString(boolean Outside)
 	{

@@ -29,7 +29,6 @@ public class simpleScraper {
 	/**
 	 * Scraping for core requirements.
 	 * @param url - the URL that the core requirements are at.
-	 * @param fileName - the file name that the course list will be printed to.
 	 */
 	public static void getCoreReqs(String url)
 	{
