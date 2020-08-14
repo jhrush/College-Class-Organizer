@@ -141,5 +141,12 @@ In order to run this program simply run the JAR file.
 </p>
 
 <p>
+You can run the file by issuing the following command in terminal.
+</p>
+<pre>
+java -jar ComputerScienceScraper.jar
+</pre>
+
+<p>
 If using using a Unix derivative you are also able to use ./build.sh and ./exec.sh to compile and run the scraper.
 </p>
