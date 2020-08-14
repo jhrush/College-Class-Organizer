@@ -133,5 +133,13 @@ Code Milestone #4 Release Notes
 <p>
 Support for CYBR discipline course lists has been added. Documentation within the code has been added in addition to improved the JUnit testing for better coverage. Additionally, minor refactoring took place. 
 
-Generated API documentation through eclipse.
+Generated API documentation through eclipse. <a href="https://jhrush21.github.io/College-Class-Organizer/doc/">It's available here</a>.
+</p>
+
+<p>
+In order to run this program simply run the JAR file.
+</p>
+
+<p>
+If using using a Unix derivative you are also able to use ./build.sh and ./exec.sh to compile and run the scraper for computerscience.
 </p>
