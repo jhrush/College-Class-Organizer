@@ -148,5 +148,5 @@ java -jar ComputerScienceScraper.jar
 </pre>
 
 <p>
-If using using a Unix derivative you are also able to use ./build.sh and ./exec.sh to compile and run the scraper.
+If using a Unix derivative you are also able to use ./build.sh and ./exec.sh to compile and run the scraper.
 </p>
