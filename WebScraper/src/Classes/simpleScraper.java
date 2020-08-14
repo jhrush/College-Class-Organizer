@@ -28,7 +28,7 @@ public class simpleScraper {
 
 	/**
 	 * Scraping for core requirements.
-	 * @param url - the URL that the core requirements are at.
+	 * @param url the URL that the core requirements are at.
 	 */
 	public static void getCoreReqs(String url)
 	{
@@ -95,8 +95,8 @@ public class simpleScraper {
 	/**
 	 * Prints core requisites to a file.
 	 * 
-	 * @param coreReqs - The list of core requirements.
-	 * @param fileName - The filename where the information will be stored.
+	 * @param coreReqs The list of core requirements.
+	 * @param fileName The filename where the information will be stored.
 	 */
 	private static void printReqToFile(ArrayList<String> coreReqs, String fileName)
 	{
@@ -132,8 +132,8 @@ public class simpleScraper {
 	 * 
 	 * The information gathered will then be exported as a CSV file.
 	 * 
-	 * @param urlToScrape - the URL that will be scraped.
-	 * @param fileName - The name of the file the info that is scraped will be exported to.
+	 * @param urlToScrape the URL that will be scraped.
+	 * @param fileName the name of the file the info that is scraped will be exported to.
 	 */
 	public static void getCourseLists(String urlToScrape, String fileName)
 	{
@@ -156,8 +156,8 @@ public class simpleScraper {
 	 * CSCI 4560,3,"MATH 2230,*,MATH 2030,*,CSCI 2030,"
 	 * where "* " dictates or
 	 * 
-	 * @param classes - the list of classes.
-	 * @param fileName - the filename the classes are going to placed.
+	 * @param classes the list of classes.
+	 * @param fileName the filename the classes are going to placed.
 	 */
 	private static void printToCSV(ArrayList<Course> classes, String fileName)
 	{
@@ -185,7 +185,7 @@ public class simpleScraper {
 	 * 
 	 * Note: not all prerequisites are "a" tagged.
 	 * 
-	 * @param url - The URL of the page to scrape.
+	 * @param url The URL of the page to scrape.
 	 * @return an array list of courses.
 	 */
 	private static ArrayList<Course> scrape(String url)
@@ -281,7 +281,7 @@ public class simpleScraper {
 	/**
 	 * Removes any hanging ORs (*) at the end of prerequisites list.
 	 * 
-	 * @param prereqs- A list of courses that act as prerequisites to another course.
+	 * @param prereqs a list of courses that act as prerequisites to another course.
 	 */
 	private static void removeOrAtEnd(ArrayList<Course> prereqs)
 	{

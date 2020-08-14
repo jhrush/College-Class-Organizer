@@ -14,10 +14,10 @@ public class Course {
 	
 	/**
 	 * Default constructor that assigns 3 credit hours to a course.
-	 * @param name - the discipline of the course.
-	 * @param number - the number associated with the course.
-	 * @param prereq - the prerequisites associated with the course.
-	 * @param required - whether the course is required of not.
+	 * @param name the discipline of the course.
+	 * @param number the number associated with the course.
+	 * @param prereq the prerequisites associated with the course.
+	 * @param required whether the course is required of not.
 	 */
 	public Course(String name, String number, Course[] prereq, boolean required) 
 	{
@@ -29,12 +29,12 @@ public class Course {
 	}
 	
 	/**
-	 * Default constructor that assigns 3 credit hours to a course.
-	 * @param name - the discipline of the course.
-	 * @param number - the number associated with the course.
-	 * @param prereq - the prerequisites associated with the course.
-	 * @param required - whether the course is required of not.
-	 * @param creds - how many credit hours does a course require.
+	 * Constructor that assigns more than 3 credit hours to a course.
+	 * @param name the discipline of the course.
+	 * @param number the number associated with the course.
+	 * @param prereq the prerequisites associated with the course.
+	 * @param required whether the course is required of not.
+	 * @param creds how many credit hours does a course require.
 	 */
 	public Course(String name, String number, Course[] prereq, boolean required, String creds) 
 	{
