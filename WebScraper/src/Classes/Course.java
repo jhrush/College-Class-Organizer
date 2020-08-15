@@ -48,7 +48,7 @@ public class Course {
 	/**
 	 * Add a prerequisite to a course.
 	 * 
-	 * @param req - the prerequisite to add to the course array.
+	 * @param req the prerequisite to add to the course array.
 	 */
 	public void addPreReq(Course req)
 	{
